@@ -11,7 +11,7 @@ import '../styles/Login.css';
 function Login() {
   return (
     <div id="loginComponent">
-      <Card className="text-center">
+      <Card className="text-center border-shadow">
         <Card.Header>Access to your account</Card.Header>
         <Card.Body>
 

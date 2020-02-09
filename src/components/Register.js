@@ -12,7 +12,7 @@ import '../styles/Login.css';
 function Register() {
   return (
     <div id="loginComponent">
-      <Card className="text-center">
+      <Card className="text-center border-shadow">
         <Card.Header>Create your account</Card.Header>
         <Card.Body>
           <Card.Text>
