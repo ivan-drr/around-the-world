@@ -1,5 +1,5 @@
 import React from 'react';
-import $ from 'jquery';
+// import $ from 'jquery';
 import { Link } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
@@ -14,7 +14,6 @@ function Login() {
       <Card className="text-center">
         <Card.Header>Access to your account</Card.Header>
         <Card.Body>
-          <Card.Text>
 
             <Form>
               <Form.Group controlId="formBasicEmail">
@@ -37,7 +36,6 @@ function Login() {
               </Button>
             </Form>
 
-          </Card.Text>
         </Card.Body>
         <Card.Footer className="text-muted">
           <Link to="signup">New here? Create an account</Link>
