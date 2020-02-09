@@ -15,7 +15,6 @@ function Register() {
       <Card className="text-center border-shadow">
         <Card.Header>Create your account</Card.Header>
         <Card.Body>
-          <Card.Text>
 
           <Form>
             <Form.Row>
@@ -69,7 +68,6 @@ function Register() {
             </Button>
           </Form>
 
-          </Card.Text>
         </Card.Body>
         <Card.Footer className="text-muted">
           <Link to="signup">New here? Create an account</Link>
