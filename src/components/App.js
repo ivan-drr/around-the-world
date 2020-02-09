@@ -1,14 +1,29 @@
-import React from 'react';
+
+import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
+
 import Login from './Login';
+import Register from './Register';
+import Map from './Map';
 
-import '../style/App.css';
+import '../styles/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Login />
-    </div>
-  );
+class App extends Component {
+
+  componentDidMount() {
+    this.props.history.push('/login')
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Register} />
+        <Route exact path="/map" component={Map} />
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);
