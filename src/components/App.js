@@ -18,6 +18,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Map />
+
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Register} />
         <Route exact path="/map" component={Map} />
