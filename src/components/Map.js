@@ -27,6 +27,8 @@ class Map extends Component {
         onViewportChange={viewport => this.setState({viewport})}
         mapboxApiAccessToken={MAPBOX_TOKEN}
       />
+
+      
     );
   }
 
