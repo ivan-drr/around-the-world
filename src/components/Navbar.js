@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import '../styles/ButtonsComponent.css';
 
 function Navbar() {
-
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
