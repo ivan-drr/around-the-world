@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 import Button from 'react-bootstrap/Button';
 import '../styles/ButtonsComponent.css';
 
@@ -31,7 +30,5 @@ function Navbar() {
         </div>
     );
   }
-
-
 
 export default Navbar;
