@@ -19,16 +19,14 @@ class Map extends Component {
 
   render() {
     return (
-      <MapGL
-        {...this.state.viewport}
-        width="100vw"
-        height="100vh"
-        mapStyle="mapbox://styles/mapbox/dark-v9"
-        onViewportChange={viewport => this.setState({viewport})}
-        mapboxApiAccessToken={MAPBOX_TOKEN}
-      />
-
-      
+        <MapGL
+          {...this.state.viewport}
+          width="100vw"
+          height="100vh"
+          mapStyle="mapbox://styles/ivan-drr/ck6s7vijs0nnb1irtj8t980vd"
+          onViewportChange={viewport => this.setState({viewport})}
+          mapboxApiAccessToken={MAPBOX_TOKEN}
+        />
     );
   }
 

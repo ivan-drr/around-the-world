@@ -14,6 +14,13 @@ function Login() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const login = () => {
+    handleClose();
+    fadeOutEffect("registerComponent");
+    fadeOutEffect("loginComponent");
+    disableBlocker();
+  }
+
   return (
     <div id="loginComponent">
       <Button variant="primary" onClick={handleShow}>
@@ -42,11 +49,8 @@ function Login() {
             </Form.Group>
           </Form>
 
-          <Button variant="primary" onClick={handleClose} className="mr-2">
-            Guardar Cambios
-          </Button>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
+          <Button variant="primary" onClick={login}>
+            Entrar
           </Button>
         </Modal.Body>
         <Modal.Footer>
@@ -55,6 +59,25 @@ function Login() {
       </Modal>
     </div>
   );
+}
+
+const disableBlocker = () =>  {
+  fadeOutEffect("blocker");
+}
+
+const fadeOutEffect = targetId => {
+    var fadeTarget = document.getElementById(targetId);
+    var fadeEffect = setInterval(function () {
+        if (!fadeTarget.style.opacity) {
+            fadeTarget.style.opacity = 1;
+        }
+        if (fadeTarget.style.opacity > 0) {
+            fadeTarget.style.opacity -= 0.1;
+        } else {
+            clearInterval(fadeEffect);
+            fadeTarget.style.display = "none";
+        }
+    }, 30);
 }
 
 export default Login;

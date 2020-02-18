@@ -21,9 +21,12 @@ class App extends Component {
     return (
       <div className="App">
         <Map />
+        <Navbar />
+
+        <div id="blocker" />
+
         <Login />
         <Register />
-        <Navbar />
 
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Register} />
