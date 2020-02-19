@@ -31,10 +31,10 @@ function Navbar() {
     return (
         <div id="navbar">
             <div id="buttonComponent1">
-                <Button variant="outline-secondary" onClick={handleShowAdd}>Añadir</Button>
+                <Button variant="outline-secondary" onClick={handleShowAdd} style={{fontSize: "2.3em"}}>✚</Button>
             </div>
             <div id="buttonComponent2">
-                <Button variant="outline-secondary" onClick={handleShowRead}>Ver viajes</Button>
+                <Button variant="outline-secondary" onClick={handleShowRead} style={{fontSize: "2em"}}>⦿</Button>
             </div>
             <Modal show={show} onHide={handleCloseAdd} className="text-center border-shadow">
                 <Modal.Header closeButton>
@@ -72,6 +72,7 @@ function Navbar() {
                             <Form.Control type="text" placeholder="URL" />
                         </Form.Group>
                     </Form>
+                    <Button variant="primary">Añadir</Button>
                 </Modal.Body>
             </Modal>
             <Modal show={show2} onHide={handleCloseRead} className="text-center border-shadow">
