@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Card from 'react-bootstrap/Card'
 import '../styles/ButtonsComponent.css';
 
 function Navbar() {
@@ -22,8 +23,10 @@ function Navbar() {
     const handleCloseAdd = () => setShow(false);
     const handleShowAdd = () => setShow(true);
 
-    const handleCloseRead = () => setShow(false);
-    const handleShowRead = () => setShow(true);
+    const [show2, setShow2] = useState(false);
+
+    const handleCloseRead = () => setShow2(false);
+    const handleShowRead = () => setShow2(true);
 
     return (
         <div id="navbar">
@@ -31,7 +34,7 @@ function Navbar() {
                 <Button variant="outline-secondary" onClick={handleShowAdd}>Añadir</Button>
             </div>
             <div id="buttonComponent2">
-                <Button variant="outline-secondary">Ver viajes</Button>
+                <Button variant="outline-secondary" onClick={handleShowRead}>Ver viajes</Button>
             </div>
             <Modal show={show} onHide={handleCloseAdd} className="text-center border-shadow">
                 <Modal.Header closeButton>
@@ -42,6 +45,11 @@ function Navbar() {
                         <Form.Group controlId="formBasicPais">
                             <Form.Label>País</Form.Label>
                             <Form.Control type="text" placeholder="País" />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicFecha">
+                            <Form.Label>Fecha</Form.Label>
+                            <Form.Control type="text" placeholder="¿Cuándo has estado?" />
                         </Form.Group>
                     
                         <Form.Group controlId="formBasicLugar">
@@ -61,9 +69,26 @@ function Navbar() {
 
                         <Form.Group controlId="formBasicFotos">
                             <Form.Label>Añadir fotos</Form.Label>
-                           
+                            <Form.Control type="text" placeholder="URL" />
                         </Form.Group>
                     </Form>
+                </Modal.Body>
+            </Modal>
+            <Modal show={show2} onHide={handleCloseRead} className="text-center border-shadow">
+                <Modal.Header closeButton>
+                    <Modal.Title>Tus viajes</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src="https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg" />
+                        <Card.Body>
+                            <Card.Title>País</Card.Title>
+                            <Card.Text>
+                            Fecha
+                            </Card.Text>
+                            <Button variant="primary">Ir al viaje</Button>
+                        </Card.Body>
+                    </Card>
                 </Modal.Body>
             </Modal>
         </div>
