@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
+import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import '../styles/ButtonsComponent.css';
 
 function Navbar() {
@@ -16,17 +18,54 @@ function Navbar() {
     // los dos botones.
 
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+
+    const handleCloseAdd = () => setShow(false);
+    const handleShowAdd = () => setShow(true);
+
+    const handleCloseRead = () => setShow(false);
+    const handleShowRead = () => setShow(true);
 
     return (
         <div id="navbar">
             <div id="buttonComponent1">
-                <Button variant="outline-secondary" onClick={handleShow}>Añadir</Button>
+                <Button variant="outline-secondary" onClick={handleShowAdd}>Añadir</Button>
             </div>
             <div id="buttonComponent2">
                 <Button variant="outline-secondary">Ver viajes</Button>
             </div>
+            <Modal show={show} onHide={handleCloseAdd} className="text-center border-shadow">
+                <Modal.Header closeButton>
+                    <Modal.Title>Añadir viaje</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="formBasicPais">
+                            <Form.Label>País</Form.Label>
+                            <Form.Control type="text" placeholder="País" />
+                        </Form.Group>
+                    
+                        <Form.Group controlId="formBasicLugar">
+                            <Form.Label>Lugares visitados</Form.Label>
+                            <Form.Control type="text" placeholder="Ciudades, sitios..." />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicPreferidos">
+                            <Form.Label>Preferidos</Form.Label>
+                            <Form.Control type="text" placeholder="Lo que más te gustó" />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicComer">
+                            <Form.Label>¿Dónde comer?</Form.Label>
+                            <Form.Control type="text" placeholder="Algún sitio al que volverías" />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicFotos">
+                            <Form.Label>Añadir fotos</Form.Label>
+                           
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+            </Modal>
         </div>
     );
   }
