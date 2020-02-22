@@ -1,0 +1,10 @@
+#title {
+  color: rgb(190, 190, 190);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.73);
+  margin-top: 15%;
+}
+
+hr {
+  width: 50%;
+  background-color: rgb(170, 170, 170);
+}

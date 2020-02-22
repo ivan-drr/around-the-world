@@ -1,0 +1,36 @@
+#addJourney, #seeAllJourneys {
+  border-radius: 5px;
+  border-color: rgba(61, 61, 61, 0.66);
+}
+
+#addJourney{
+    position: fixed;
+    top: 5%;
+    left:90%;
+}
+
+#seeAllJourneys{
+    position: fixed;
+    top: 15%;
+    left:90%;
+}
+
+#btnAddJourney:hover, #btnSeeAllJourneys:hover {
+  border-radius: 20px;
+  transition: border-radius .8s;
+}
+
+#btnAddJourney:not(hover), #btnSeeAllJourneys:not(hover) {
+  border-radius: 5px;
+  transition: border-radius .6s;
+}
+
+#btnAddJourney {
+  background-color: rgba(49, 103, 194, 0.86);
+  border-color: rgba(70, 143, 31);
+}
+
+#btnSeeAllJourneys {
+  background-color: rgba(91, 39, 157, 0.86);
+  border-color: rgba(70, 143, 31);
+}

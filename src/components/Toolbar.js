@@ -4,19 +4,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Card from 'react-bootstrap/Card'
-import '../styles/ButtonsComponent.css';
+import '../styles/Toolbar.css';
 
 function Navbar() {
-    // estas constantes definen un estado "show" del componente
-    // creamos dos setters de la variable estado "handleClose"
-    // y "handleShow", hacemos esto para mostrar o no por ejemplo un Modal
-    // ya que el componente modal de react bootstrap tiene una propiedad
-    // llamada "show" que lo muestra si su valor es true y lo esconde si es false
-    // en este caso no lo estas usando, pero seria buena idea utilizarlas para
-    // crear un modal para añadir viajes como puede ser el modal del componente login.
-    // PERO si utilizamos dos modales: añadir viajes y ver viajes, entonces no podremos
-    // utilizar la misma variable ya que se mostrarian los dos al pulsar cualquiera de
-    // los dos botones.
 
     const [show, setShow] = useState(false);
 
@@ -30,11 +20,11 @@ function Navbar() {
 
     return (
         <div id="navbar">
-            <div id="buttonComponent1">
-                <Button variant="outline-secondary" onClick={handleShowAdd} style={{fontSize: "2.3em"}}>✚</Button>
+            <div id="addJourney">
+                <Button id="btnAddJourney" onClick={handleShowAdd} style={{fontSize: "2.3em"}}>✚</Button>
             </div>
-            <div id="buttonComponent2">
-                <Button variant="outline-secondary" onClick={handleShowRead} style={{fontSize: "2em"}}>⦿</Button>
+            <div id="seeAllJourneys">
+                <Button id="btnSeeAllJourneys" onClick={handleShowRead} style={{fontSize: "2em"}}>⦿</Button>
             </div>
             <Modal show={show} onHide={handleCloseAdd} className="text-center border-shadow">
                 <Modal.Header closeButton>
@@ -51,7 +41,7 @@ function Navbar() {
                             <Form.Label>Fecha</Form.Label>
                             <Form.Control type="text" placeholder="¿Cuándo has estado?" />
                         </Form.Group>
-                    
+
                         <Form.Group controlId="formBasicLugar">
                             <Form.Label>Lugares visitados</Form.Label>
                             <Form.Control type="text" placeholder="Ciudades, sitios..." />

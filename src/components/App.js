@@ -5,7 +5,9 @@ import { Route, withRouter } from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
 import Map from './Map';
-import Navbar from './Navbar';
+import Toolbar from './Toolbar';
+import AnimatedTitle from './AnimatedTitle';
+import * as CONSTANTS from '../constants/global';
 
 import '../styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,9 +23,13 @@ class App extends Component {
     return (
       <div className="App">
         <Map />
-        <Navbar />
+        <Toolbar />
 
-        <div id="blocker" />
+        <div id="blocker">
+          <AnimatedTitle
+            title="Manage your journeys"
+            rotatingWords={CONSTANTS.rotatingTitleWords} />
+        </div>
 
         <Login />
         <Register />
