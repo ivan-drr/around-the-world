@@ -5,8 +5,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import '../styles/Register.css';
-
 function Register() {
 
   const [show, setShow] = useState(false);
@@ -42,7 +40,7 @@ function Register() {
               <Form.Label>Contraseña</Form.Label>
               <Form.Control type="password" placeholder="Contraseña" />
             </Form.Group>
-            
+
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Repite tu contraseña</Form.Label>
               <Form.Control type="password" placeholder="Repite tu contraseña" />

@@ -32,7 +32,6 @@ class App extends Component {
         </div>
 
         <Login />
-        <Register />
 
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Register} />

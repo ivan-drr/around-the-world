@@ -3,16 +3,23 @@
   border-color: rgba(61, 61, 61, 0.66);
 }
 
-#addJourney{
+#addJourney, #seeAllJourneys{
     position: fixed;
-    top: 5%;
-    left:90%;
+    left: 90vw;
+}
+
+@media (max-width: 1024px) {
+  #addJourney, #seeAllJourneys {
+    left: 80vw !important;
+  }
+}
+
+#addJourney {
+  top: 8vh;
 }
 
 #seeAllJourneys{
-    position: fixed;
-    top: 15%;
-    left:90%;
+  top: 20vh;
 }
 
 #btnAddJourney:hover, #btnSeeAllJourneys:hover {
@@ -27,10 +34,10 @@
 
 #btnAddJourney {
   background-color: rgba(49, 103, 194, 0.86);
-  border-color: rgba(70, 143, 31);
+  border-color: rgba(70, 143, 31, 0);
 }
 
 #btnSeeAllJourneys {
   background-color: rgba(91, 39, 157, 0.86);
-  border-color: rgba(70, 143, 31);
+  border-color: rgba(70, 143, 31, 0);
 }

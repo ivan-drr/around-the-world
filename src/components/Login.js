@@ -16,16 +16,15 @@ function Login() {
 
   const login = () => {
     handleClose();
-    fadeOutEffect("registerComponent");
     fadeOutEffect("loginComponent");
     disableBlocker();
   }
 
   return (
     <div id="loginComponent">
-      <Button variant="primary" onClick={handleShow}>
-        Login
-      </Button>
+      <div className="btnCstm btn-two" onClick={handleShow}>
+        <span>Dive in</span>
+      </div>
       <Modal show={show} onHide={handleClose} className="text-center border-shadow">
         <Modal.Header closeButton>
           <Modal.Title>Accede a tu cuenta</Modal.Title>
