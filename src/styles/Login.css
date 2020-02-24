@@ -14,6 +14,9 @@ margin-left: -125px;
     text-align: center;
     width: 250px;
     cursor: pointer;
+    color: #131313;
+    letter-spacing: .15em;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 .btn-two {
@@ -38,7 +41,7 @@ margin-left: -125px;
     z-index: 1;
     transition: all 0.5s;
     border: 1px solid rgba(255,255,255,0.2);
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255,255,255,0.2);
 }
 .btn-two::after {
     content: '';
@@ -54,9 +57,16 @@ margin-left: -125px;
 }
 .btn-two:hover::before {
   transform: rotate(-45deg);
-  background-color: rgba(49, 103, 194,0.2);
+  background-color: rgba(224, 224, 224, 0.76);
+  transition: background-color .8s, transform .8s;
 }
 .btn-two:hover::after {
   transform: rotate(45deg);
-  background-color: rgba(91, 39, 157,0.2);
+  background-color: rgba(224, 224, 224, 0.76);
+  transition: background-color .8s, transform .8s;
+}
+
+.btnCstm:hover {
+  color: rgb(50, 50, 50);
+  transition: color .6s;
 }

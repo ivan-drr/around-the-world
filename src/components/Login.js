@@ -15,9 +15,31 @@ function Login() {
   const handleShow = () => setShow(true);
 
   const login = () => {
-    handleClose();
-    fadeOutEffect("loginComponent");
-    disableBlocker();
+    const errorLogin = document.getElementById("errorLogin");
+
+    const nickname = document.getElementById("nickname").value;
+    const password = document.getElementById("password").value;
+
+    fetch("https://atw-users.herokuapp.com", {
+      method: 'GET',
+      mode: 'no-cors'
+    })
+    .then((resp) => resp.json())
+    .then((user, nickname, password) => {
+      if (user[0].nickname === nickname
+        && user[0].password === password) {
+        handleClose();
+        fadeOutEffect("loginComponent");
+        disableBlocker();
+        sessionStorage.setItem("logged", true);
+      }
+    })
+    .catch(function(err) {
+      errorLogin.innerHTML = "User not found with that nickname and password";
+      errorLogin.style.display = "block";
+      console.log(err);
+    });
+
   }
 
   return (
@@ -27,29 +49,30 @@ function Login() {
       </div>
       <Modal show={show} onHide={handleClose} className="text-center border-shadow">
         <Modal.Header closeButton>
-          <Modal.Title>Accede a tu cuenta</Modal.Title>
+          <Modal.Title>Access to your account</Modal.Title>
         </Modal.Header>
+        <span id="errorLogin" className="mt-4" style={{display: "none", color: "rgb(170, 58, 58)"}} />
         <Modal.Body>
           <Form>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Correo Electronico</Form.Label>
-              <Form.Control type="email" placeholder="Introduce tu correo" />
+              <Form.Label>Email</Form.Label>
+              <Form.Control id="nickname" type="text" placeholder="Your nickname" />
               <Form.Text className="text-muted">
-                Nunca compartiremos tu correo con nadie.
+                We'll not share it with anyone.
               </Form.Text>
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Label>Contraseña</Form.Label>
-              <Form.Control type="password" placeholder="Contraseña" />
+              <Form.Label>Password</Form.Label>
+              <Form.Control id="password" type="password" placeholder="Contraseña" />
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Recuerdame" />
+              <Form.Check type="checkbox" label="Remember me" />
             </Form.Group>
           </Form>
 
           <Button variant="primary" onClick={login}>
-            Entrar
+            Login
           </Button>
         </Modal.Body>
         <Modal.Footer>
