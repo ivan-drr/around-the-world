@@ -23,9 +23,9 @@ function Login() {
     fetch("https://atw-users.herokuapp.com", {
       method: 'GET',
       mode: 'no-cors'
-    })
+    }, nickname, password)
     .then((resp) => resp.json())
-    .then((user, nickname, password) => {
+    .then((user) => {
       if (user[0].nickname === nickname
         && user[0].password === password) {
         handleClose();

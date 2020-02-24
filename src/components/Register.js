@@ -9,7 +9,6 @@ function Register(props) {
 
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const handleRegister = () => {
     const errorRegister = document.getElementById("errorRegister");
