@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-// import $ from 'jquery';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Form from 'react-bootstrap/Form';
@@ -8,33 +7,43 @@ import Modal from 'react-bootstrap/Modal';
 
 import '../styles/Login.css';
 
-function Login() {
+class Login extends Component {
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  constructor() {
+    super();
+    this.state = {
+      show: false,
+      nickname: false,
+      password: false
+    }
+  }
 
-  const login = () => {
-    const errorLogin = document.getElementById("errorLogin");
+  handleClose = () => this.setState(state => state.show = false);
+  handleShow = () => this.setState(state => state.show = true);
 
-    const nickname = document.getElementById("nickname").value;
-    const password = document.getElementById("password").value;
+  handleChange = event => {
+    this.setState({
+      [event.target.name]:event.target.value
+    });
+  };
 
+  login = () => {
     fetch("https://atw-users.herokuapp.com", {
       method: 'GET',
       mode: 'no-cors'
-    }, nickname, password)
+    })
     .then((resp) => resp.json())
     .then((user) => {
-      if (user[0].nickname === nickname
-        && user[0].password === password) {
-        handleClose();
+      if (user[0].nickname === this.state.nickname
+        && user[0].password === this.state.password) {
+        this.handleClose();
         fadeOutEffect("loginComponent");
         disableBlocker();
         sessionStorage.setItem("logged", true);
       }
     })
     .catch(function(err) {
+      const errorLogin = document.getElementById("errorLogin");
       errorLogin.innerHTML = "User not found with that nickname and password";
       errorLogin.style.display = "block";
       console.log(err);
@@ -42,45 +51,49 @@ function Login() {
 
   }
 
-  return (
-    <div id="loginComponent">
-      <div className="btnCstm btn-two" onClick={handleShow}>
-        <span>Dive in</span>
+  render() {
+    return (
+      <div id="loginComponent">
+        <div className="btnCstm btn-two" onClick={this.handleShow}>
+          <span>Dive in</span>
+        </div>
+
+        <Modal show={this.state.show} onHide={this.handleClose} className="text-center border-shadow">
+          <Modal.Header closeButton>
+            <Modal.Title>Access to your account</Modal.Title>
+          </Modal.Header>
+
+          <span id="errorLogin" className="mt-4" style={{display: "none", color: "rgb(170, 58, 58)"}} />
+          <Modal.Body>
+            <Form>
+              <Form.Group controlId="formGridUserName">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="text" name="nickname" onChange={this.handleChange} placeholder="Your nickname" />
+                <Form.Text className="text-muted">
+                  We'll not share it with anyone.
+                </Form.Text>
+              </Form.Group>
+
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control name="password" onChange={this.handleChange} type="password" placeholder="Contraseña" />
+              </Form.Group>
+              <Form.Group controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" label="Remember me" />
+              </Form.Group>
+            </Form>
+
+            <Button variant="primary" onClick={this.login}>
+              Login
+            </Button>
+          </Modal.Body>
+          <Modal.Footer>
+            <Link to="signup">New here? Create an account</Link>
+          </Modal.Footer>
+        </Modal>
       </div>
-      <Modal show={show} onHide={handleClose} className="text-center border-shadow">
-        <Modal.Header closeButton>
-          <Modal.Title>Access to your account</Modal.Title>
-        </Modal.Header>
-        <span id="errorLogin" className="mt-4" style={{display: "none", color: "rgb(170, 58, 58)"}} />
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control id="nickname" type="text" placeholder="Your nickname" />
-              <Form.Text className="text-muted">
-                We'll not share it with anyone.
-              </Form.Text>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control id="password" type="password" placeholder="Contraseña" />
-            </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Remember me" />
-            </Form.Group>
-          </Form>
-
-          <Button variant="primary" onClick={login}>
-            Login
-          </Button>
-        </Modal.Body>
-        <Modal.Footer>
-          <Link to="signup">New here? Create an account</Link>
-        </Modal.Footer>
-      </Modal>
-    </div>
-  );
+    );
+  }
 }
 
 const disableBlocker = () =>  {
