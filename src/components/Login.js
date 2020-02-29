@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import { Link } from 'react-router-dom';
 
 import Form from 'react-bootstrap/Form';
@@ -27,15 +28,21 @@ class Login extends Component {
     });
   };
 
+  
   login = () => {
-    fetch("https://atw-users.herokuapp.com", {
-      method: 'GET',
-      mode: 'no-cors'
+
+    $.ajax ({
+      type: "GET",
+      url: "https://atw-users.herokuapp.com/nick/" + this.state.nickname,
+      dataType: 'json',
+      headers: {
+        'Access-Control-Allow-Headers': 'x-requested-with'
+      },
+      contentType: 'application/json; charset=utf-8'
     })
-    .then((resp) => resp.json())
     .then((user) => {
-      if (user[0].nickname === this.state.nickname
-        && user[0].password === this.state.password) {
+      if (user.nickname === this.state.nickname
+        && user.password === this.state.password) {
         this.handleClose();
         fadeOutEffect("loginComponent");
         disableBlocker();
@@ -46,9 +53,7 @@ class Login extends Component {
       const errorLogin = document.getElementById("errorLogin");
       errorLogin.innerHTML = "User not found with that nickname and password";
       errorLogin.style.display = "block";
-      console.log(err);
     });
-
   }
 
   render() {

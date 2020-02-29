@@ -20,7 +20,7 @@ class App extends Component {
         <Map />
         <Toolbar />
 
-        {!localStorage.getItem("logged")
+        {!sessionStorage.getItem("logged")
           ? (
             <>
             <div id="blocker">

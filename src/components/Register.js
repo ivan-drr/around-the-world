@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import { withRouter } from 'react-router-dom';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+
 
 class Register extends Component {
 
@@ -29,27 +31,29 @@ class Register extends Component {
     const errorRegister = document.getElementById("errorRegister");
 
     const userToCreate = {
-      name: this.state.name,
-      nickname: this.state.nickname,
-      password: this.state.password
+      'name': this.state.name,
+      'nickname': this.state.nickname,
+      'password': this.state.password,
+      'birthYear': this.state.birthYear
     };
-
-    fetch("https://atw-users.herokuapp.com/create", {
-      method: 'POST',
-      mode: 'no-cors',
+    $.ajax ({
+      type: "POST",
+      url: "https://atw-users.herokuapp.com/create",
+      dataType: 'json',
       headers: {
-        'Content-Type': "application/json",
+        'Access-Control-Allow-Headers': 'x-requested-with'
       },
-      body: userToCreate
+      data: JSON.stringify(userToCreate), 
+      contentType: 'application/json; charset=utf-8'
     })
-    .then(() => this.handleClose)
+    .then(() => {
+      this.handleClose();
+    })
     .catch(function(err) {
       errorRegister.innerHTML = "Could not create user";
       errorRegister.style.display = "block";
-      console.log(err);
     });
   }
-
   render() {
     return (
       <div id="registerComponent">
