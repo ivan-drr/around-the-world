@@ -83,11 +83,6 @@ class Register extends Component {
                 <Form.Label>Password</Form.Label>
                 <Form.Control name="password" onChange={this.handleChange} type="password" placeholder="Your Password" />
               </Form.Group>
-
-              <Form.Group controlId="formBasicRePassword">
-                <Form.Label>Rewrite your password</Form.Label>
-                <Form.Control type="password" placeholder="Rewrite your password" />
-              </Form.Group>
             </Form>
 
             <Button variant="primary" onClick={this.handleRegister} className="mr-2">
